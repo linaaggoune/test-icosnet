@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    /* CSS for the form container */
+    .form-container {
+      margin: 0 auto; /* Center the form container */
+      max-width: 400px; /* Adjust the width as needed */
+      padding: 20px;
+    }
+
+    /* CSS for the form inputs */
+    .form-control {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 20px; /* Rounded corners */
+      outline: none; /* Remove outline on focus */
+    }
+
+    /* CSS for the form labels */
+    .form-label {
+      font-weight: bold;
+    }
+
+    /* CSS for the submit button */
+
+    /* Optional: Add some spacing between inputs */
+    .mb-2 {
+      margin-bottom: 20px;
+      width: 550px;
+    }
+  </style>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Add new order</title>
+
+    <!-- Montserrat Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styled.css')}}"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div class="grid-container">
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+          <h2>Ajouter Nouveau order</h2>
+        </div>
+
+        <div class="table-responsive-lg caption-center">
+          <caption>
+            <!-- <h3 style="font-family: serif; margin-left: 500px; margin-top: 40px;  color: white">ADD NEW PRODUIT</h3>-->
+          </caption>
+          <hr />
+          <form
+            class="p-3"
+            style="width: 500px; margin: 0 auto"
+            action="/addnewemployee"
+            method="POST"
+          >
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="title"
+                name="title"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="description"
+                required
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="price" class="form-label">Price</label>
+              <input
+                type="text"
+                class="form-control"
+                id="price"
+                name="price"
+                required
+              />
+            </div>
+
+            <div class="mb-2">
+              <label for="createdat" class="form-label">Created At</label>
+              <input
+                type="date"
+                class="form-control"
+                id="createdat"
+                name="createdat"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="status" class="form-label">Status</label>
+              <select class="form-control" id="status" name="status" required>
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-success" style="width: 100%">
+              Add Order
+            </button>
+          </form>
+        </div>
+      </main>
+      <!-- End Main -->
+    </div>
+
+    <!-- Scripts -->
+    <!-- ApexCharts -->
+
+    <!-- Custom JS -->
+    <script src="../static/js/scripts.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Get the current date in the format YYYY-MM-DD
+        var currentDate = new Date().toISOString().split("T")[0];
+
+        // Set the value of the createdat input
+        document.getElementById("createdat").value = currentDate;
+      });
+    </script>
+  </body>
+</html>
